@@ -1,4 +1,4 @@
-## 0.8.3 (Unreleased)
+## 0.8.3 (September 19th, 2017)
 
 CHANGES:
 
@@ -8,7 +8,7 @@ CHANGES:
    array; and the `default` policy will not be forcefully added to policies
    saved in configurations. Please note that the `default` policy will continue
    to be added to generated tokens, however, rather than backends adding
-   `default` to the given set of input policies (in some cases, adn not in
+   `default` to the given set of input policies (in some cases, and not in
    others), the stored set will reflect the user-specified set.
  * `sign-self-issued` modifies Issuer in generated certificates: In 0.8.2 the
    endpoint would not modify the Issuer in the generated certificate, leaving
@@ -22,13 +22,26 @@ CHANGES:
    order to enable this API endpoint. Once set, the available functionality has
    been enhanced slightly; it now supports listing and decrypting most of
    Vault's core data structures, except for the encryption keyring itself.
+ * `generic` is now `kv`: To better reflect its actual use, the `generic`
+   backend is now `kv`. Using `generic` will still work for backwards
+   compatibility.
+
+FEATURES:
+
+ * **GCE Support for GCP Auth**: GCE instances can now authenticate to Vault
+   using machine credentials.
+ * **Support for Kubernetes Service Account Auth**: Kubernetes Service Accounts
+   can not authenticate to vault using JWT tokens.
 
 IMPROVEMENTS:
 
+ * configuration: Provide a config option to store Vault server's process ID
+   (PID) in a file [GH-3321]
  * mfa (Enterprise): Add the ability to use identity metadata in username format
  * mfa/okta (Enterprise): Add support for configuring base_url for API calls
  * secret/pki: `sign-intermediate` will now allow specifying a `ttl` value 
    longer than the signing CA certificate's NotAfter value. [GH-3325]
+ * sys/raw: Raw storage access is now disabled by default [GH-3329]
 
 BUG FIXES:
 
